@@ -1,0 +1,17 @@
+[4.442s] Invoking command in '/home/robot/create3_ws/build/create3_pkg': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/create3_ws/build/create3_pkg/build --no-deps symlink_data
+[6.076s] running develop
+[7.158s] running egg_info
+[7.250s] writing create3_pkg.egg-info/PKG-INFO
+[7.251s] writing dependency_links to create3_pkg.egg-info/dependency_links.txt
+[7.253s] writing entry points to create3_pkg.egg-info/entry_points.txt
+[7.254s] writing requirements to create3_pkg.egg-info/requires.txt
+[7.254s] writing top-level names to create3_pkg.egg-info/top_level.txt
+[7.446s] reading manifest file 'create3_pkg.egg-info/SOURCES.txt'
+[7.448s] writing manifest file 'create3_pkg.egg-info/SOURCES.txt'
+[7.546s] running build_ext
+[7.547s] Creating /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3-pkg.egg-link (link to .)
+[7.549s] Installing animationController script to /home/robot/create3_ws/install/create3_pkg/lib/create3_pkg
+[7.551s] 
+[7.552s] Installed /home/robot/create3_ws/build/create3_pkg
+[7.553s] running symlink_data
+[7.711s] Invoked command in '/home/robot/create3_ws/build/create3_pkg' returned '0': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/create3_ws/build/create3_pkg/build --no-deps symlink_data

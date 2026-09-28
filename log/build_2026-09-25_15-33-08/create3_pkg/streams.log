@@ -1,0 +1,24 @@
+[3.729s] Invoking command in '/home/robot/create3_ws/src/create3_pkg': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/create3_pkg build --build-base /home/robot/create3_ws/build/create3_pkg/build install --record /home/robot/create3_ws/build/create3_pkg/install.log --single-version-externally-managed install_data
+[4.920s] running egg_info
+[5.008s] writing ../../build/create3_pkg/create3_pkg.egg-info/PKG-INFO
+[5.009s] writing dependency_links to ../../build/create3_pkg/create3_pkg.egg-info/dependency_links.txt
+[5.012s] writing entry points to ../../build/create3_pkg/create3_pkg.egg-info/entry_points.txt
+[5.029s] writing requirements to ../../build/create3_pkg/create3_pkg.egg-info/requires.txt
+[5.030s] writing top-level names to ../../build/create3_pkg/create3_pkg.egg-info/top_level.txt
+[5.212s] reading manifest file '../../build/create3_pkg/create3_pkg.egg-info/SOURCES.txt'
+[5.216s] writing manifest file '../../build/create3_pkg/create3_pkg.egg-info/SOURCES.txt'
+[5.217s] running build
+[5.217s] running build_py
+[5.218s] copying create3_pkg/twist_cmd_vel2.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+[5.221s] running install
+[5.246s] running install_lib
+[5.334s] copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/twist_cmd_vel2.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+[5.338s] byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/twist_cmd_vel2.py to twist_cmd_vel2.cpython-312.pyc
+[5.342s] running install_data
+[5.343s] running install_egg_info
+[5.436s] removing '/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg-0.0.0-py3.12.egg-info' (and everything under it)
+[5.437s] Copying ../../build/create3_pkg/create3_pkg.egg-info to /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg-0.0.0-py3.12.egg-info
+[5.443s] running install_scripts
+[6.103s] Installing twist_cmd_vel2 script to /home/robot/create3_ws/install/create3_pkg/lib/create3_pkg
+[6.105s] writing list of installed files to '/home/robot/create3_ws/build/create3_pkg/install.log'
+[6.249s] Invoked command in '/home/robot/create3_ws/src/create3_pkg' returned '0': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/create3_pkg build --build-base /home/robot/create3_ws/build/create3_pkg/build install --record /home/robot/create3_ws/build/create3_pkg/install.log --single-version-externally-managed install_data

@@ -1,0 +1,20 @@
+running develop
+running egg_info
+creating create3_pkg.egg-info
+writing create3_pkg.egg-info/PKG-INFO
+writing dependency_links to create3_pkg.egg-info/dependency_links.txt
+writing requirements to create3_pkg.egg-info/requires.txt
+writing top-level names to create3_pkg.egg-info/top_level.txt
+writing manifest file 'create3_pkg.egg-info/SOURCES.txt'
+reading manifest file 'create3_pkg.egg-info/SOURCES.txt'
+writing manifest file 'create3_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3-pkg.egg-link (link to .)
+
+Installed /home/robot/create3_ws/build/create3_pkg
+running symlink_data
+creating /home/robot/create3_ws/install/create3_pkg/share/ament_index
+creating /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index
+creating /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/robot/create3_ws/build/create3_pkg/resource/create3_pkg -> /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/robot/create3_ws/build/create3_pkg/package.xml -> /home/robot/create3_ws/install/create3_pkg/share/create3_pkg

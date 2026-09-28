@@ -1,0 +1,2 @@
+[console_scripts]
+twist_cmd_vel2 = create3_pkg.twist_cmd_vel2:main

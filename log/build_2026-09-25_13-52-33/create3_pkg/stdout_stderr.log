@@ -1,0 +1,44 @@
+running develop
+Removing /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3-pkg.egg-link (link to .)
+running egg_info
+writing ../../build/create3_pkg/create3_pkg.egg-info/PKG-INFO
+writing dependency_links to ../../build/create3_pkg/create3_pkg.egg-info/dependency_links.txt
+writing entry points to ../../build/create3_pkg/create3_pkg.egg-info/entry_points.txt
+writing requirements to ../../build/create3_pkg/create3_pkg.egg-info/requires.txt
+writing top-level names to ../../build/create3_pkg/create3_pkg.egg-info/top_level.txt
+reading manifest file '../../build/create3_pkg/create3_pkg.egg-info/SOURCES.txt'
+writing manifest file '../../build/create3_pkg/create3_pkg.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/robot/create3_ws/build/create3_pkg/build
+creating /home/robot/create3_ws/build/create3_pkg/build/lib
+creating /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/lightcontroller.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/ir_subscriber.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/MazeController.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/twist_cmd_vel.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/__init__.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+copying create3_pkg/animationController.py -> /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg
+running install
+running install_lib
+creating /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/lightcontroller.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/ir_subscriber.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/MazeController.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/twist_cmd_vel.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/__init__.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+copying /home/robot/create3_ws/build/create3_pkg/build/lib/create3_pkg/animationController.py -> /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/lightcontroller.py to lightcontroller.cpython-312.pyc
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/ir_subscriber.py to ir_subscriber.cpython-312.pyc
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/MazeController.py to MazeController.cpython-312.pyc
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/twist_cmd_vel.py to twist_cmd_vel.cpython-312.pyc
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg/animationController.py to animationController.cpython-312.pyc
+running install_data
+copying resource/create3_pkg -> /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index/packages
+copying package.xml -> /home/robot/create3_ws/install/create3_pkg/share/create3_pkg
+running install_egg_info
+Copying ../../build/create3_pkg/create3_pkg.egg-info to /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3_pkg-0.0.0-py3.12.egg-info
+running install_scripts
+Installing twist_cmd_vel script to /home/robot/create3_ws/install/create3_pkg/lib/create3_pkg
+writing list of installed files to '/home/robot/create3_ws/build/create3_pkg/install.log'

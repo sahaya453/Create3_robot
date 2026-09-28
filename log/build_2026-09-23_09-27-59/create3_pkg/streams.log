@@ -1,0 +1,22 @@
+[6.571s] Invoking command in '/home/robot/create3_ws/build/create3_pkg': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/create3_ws/build/create3_pkg/build --no-deps symlink_data
+[9.582s] running develop
+[11.993s] running egg_info
+[11.994s] creating create3_pkg.egg-info
+[12.402s] writing create3_pkg.egg-info/PKG-INFO
+[12.408s] writing dependency_links to create3_pkg.egg-info/dependency_links.txt
+[12.409s] writing requirements to create3_pkg.egg-info/requires.txt
+[12.411s] writing top-level names to create3_pkg.egg-info/top_level.txt
+[12.412s] writing manifest file 'create3_pkg.egg-info/SOURCES.txt'
+[12.969s] reading manifest file 'create3_pkg.egg-info/SOURCES.txt'
+[12.973s] writing manifest file 'create3_pkg.egg-info/SOURCES.txt'
+[13.274s] running build_ext
+[13.275s] Creating /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3-pkg.egg-link (link to .)
+[13.277s] 
+[13.280s] Installed /home/robot/create3_ws/build/create3_pkg
+[13.281s] running symlink_data
+[13.283s] creating /home/robot/create3_ws/install/create3_pkg/share/ament_index
+[13.285s] creating /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index
+[13.286s] creating /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index/packages
+[13.288s] symbolically linking /home/robot/create3_ws/build/create3_pkg/resource/create3_pkg -> /home/robot/create3_ws/install/create3_pkg/share/ament_index/resource_index/packages
+[13.289s] symbolically linking /home/robot/create3_ws/build/create3_pkg/package.xml -> /home/robot/create3_ws/install/create3_pkg/share/create3_pkg
+[13.498s] Invoked command in '/home/robot/create3_ws/build/create3_pkg' returned '0': PYTHONPATH=/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/create3_ws/build/create3_pkg/build --no-deps symlink_data

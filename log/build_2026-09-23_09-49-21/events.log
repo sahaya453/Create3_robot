@@ -1,0 +1,99 @@
+[0.000000] (-) TimerEvent: {}
+[0.001943] (create3_pkg) JobQueued: {'identifier': 'create3_pkg', 'dependencies': OrderedDict()}
+[0.002146] (create3_pkg) JobStarted: {'identifier': 'create3_pkg'}
+[0.099170] (-) TimerEvent: {}
+[0.202750] (-) TimerEvent: {}
+[0.303489] (-) TimerEvent: {}
+[0.405567] (-) TimerEvent: {}
+[0.506325] (-) TimerEvent: {}
+[0.607012] (-) TimerEvent: {}
+[0.707727] (-) TimerEvent: {}
+[0.808415] (-) TimerEvent: {}
+[0.909072] (-) TimerEvent: {}
+[1.009731] (-) TimerEvent: {}
+[1.110386] (-) TimerEvent: {}
+[1.211029] (-) TimerEvent: {}
+[1.312035] (-) TimerEvent: {}
+[1.415977] (-) TimerEvent: {}
+[1.519824] (-) TimerEvent: {}
+[1.620539] (-) TimerEvent: {}
+[1.721863] (-) TimerEvent: {}
+[1.822477] (-) TimerEvent: {}
+[1.923065] (-) TimerEvent: {}
+[2.023675] (-) TimerEvent: {}
+[2.124227] (-) TimerEvent: {}
+[2.224830] (-) TimerEvent: {}
+[2.325452] (-) TimerEvent: {}
+[2.426085] (-) TimerEvent: {}
+[2.526822] (-) TimerEvent: {}
+[2.628253] (-) TimerEvent: {}
+[2.729585] (-) TimerEvent: {}
+[2.830755] (-) TimerEvent: {}
+[2.931654] (-) TimerEvent: {}
+[3.032266] (-) TimerEvent: {}
+[3.133416] (-) TimerEvent: {}
+[3.234489] (-) TimerEvent: {}
+[3.335630] (-) TimerEvent: {}
+[3.436790] (-) TimerEvent: {}
+[3.537430] (-) TimerEvent: {}
+[3.637991] (-) TimerEvent: {}
+[3.738620] (-) TimerEvent: {}
+[3.839180] (-) TimerEvent: {}
+[3.939791] (-) TimerEvent: {}
+[4.040386] (-) TimerEvent: {}
+[4.140943] (-) TimerEvent: {}
+[4.241538] (-) TimerEvent: {}
+[4.342202] (-) TimerEvent: {}
+[4.443176] (-) TimerEvent: {}
+[4.472173] (create3_pkg) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/robot/create3_ws/build/create3_pkg/build', '--no-deps', 'symlink_data'], 'cwd': '/home/robot/create3_ws/build/create3_pkg', 'env': {'PYTHON_BASIC_REPL': '1', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'robot', 'SSH_CLIENT': '10.149.24.24 63791 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/robot/.vscode-server/cli/servers/Stable-7debcd0e2acdea1c52de81bf9ee1620444407dda/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/robot/create3_examples_ws/install/create3_coverage/lib:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/robot/.vscode-server/cli/servers/Stable-7debcd0e2acdea1c52de81bf9ee1620444407dda/server/bin/helpers/browser.sh', 'HOME': '/home/robot', 'OLDPWD': '/home/robot/create3_ws/src/create3_pkg', 'TERM_PROGRAM_VERSION': '1.138.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-b49d7f1f-aa5d-412e-995b-2a34200c393f.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/robot/.vscode-server/cli/servers/Stable-7debcd0e2acdea1c52de81bf9ee1620444407dda/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/robot/.vscode-server/cli/servers/Stable-7debcd0e2acdea1c52de81bf9ee1620444407dda/server/node', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'BUNDLED_DEBUGPY_PATH': '/home/robot/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-arm64/bundled/libs/debugpy', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/home/robot/create3_ws/install:/home/robot/create3_examples_ws/install:/home/robot/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'robot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '1', 'PATH': '/home/robot/.vscode-server/cli/servers/Stable-7debcd0e2acdea1c52de81bf9ee1620444407dda/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/robot/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-arm64/bundled/scripts/noConfigScripts', 'XDG_RUNTIME_DIR': '/run/user/1000', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/home/robot/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f205dde1a5eb7427.txt', 'LANG': 'en_US.UTF-8', 'PYTHONSTARTUP': '/home/robot/.vscode-server/data/User/workspaceStorage/15203c33316c4ad150135b66928b2b08/ms-python.python/pythonrc.py', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-fb2dacb0e1.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/robot/create3_ws/install/create3_pkg:/home/robot/ros2_ws/install/scan_logger:/home/robot/create3_examples_ws/install/create3_teleop:/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_examples_py:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/robot/create3_ws/build/create3_pkg', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.149.24.24 63791 10.149.24.16 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/robot/create3_ws/build/create3_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:/home/robot/create3_ws/build/create3_pkg:/home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages:/home/robot/ros2_ws/install/scan_logger/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_teleop/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_py/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[4.543343] (-) TimerEvent: {}
+[4.644096] (-) TimerEvent: {}
+[4.744848] (-) TimerEvent: {}
+[4.845504] (-) TimerEvent: {}
+[4.946174] (-) TimerEvent: {}
+[5.046823] (-) TimerEvent: {}
+[5.147440] (-) TimerEvent: {}
+[5.248009] (-) TimerEvent: {}
+[5.348814] (-) TimerEvent: {}
+[5.449415] (-) TimerEvent: {}
+[5.549995] (-) TimerEvent: {}
+[5.650603] (-) TimerEvent: {}
+[5.751159] (-) TimerEvent: {}
+[5.851765] (-) TimerEvent: {}
+[5.952409] (-) TimerEvent: {}
+[6.053019] (-) TimerEvent: {}
+[6.085803] (create3_pkg) StdoutLine: {'line': b'running develop\n'}
+[6.153181] (-) TimerEvent: {}
+[6.253811] (-) TimerEvent: {}
+[6.354433] (-) TimerEvent: {}
+[6.455000] (-) TimerEvent: {}
+[6.555625] (-) TimerEvent: {}
+[6.656259] (-) TimerEvent: {}
+[6.756868] (-) TimerEvent: {}
+[6.857445] (-) TimerEvent: {}
+[6.957988] (-) TimerEvent: {}
+[7.058564] (-) TimerEvent: {}
+[7.159111] (-) TimerEvent: {}
+[7.181051] (create3_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[7.259271] (-) TimerEvent: {}
+[7.270799] (create3_pkg) StdoutLine: {'line': b'writing create3_pkg.egg-info/PKG-INFO\n'}
+[7.272145] (create3_pkg) StdoutLine: {'line': b'writing dependency_links to create3_pkg.egg-info/dependency_links.txt\n'}
+[7.275367] (create3_pkg) StdoutLine: {'line': b'writing entry points to create3_pkg.egg-info/entry_points.txt\n'}
+[7.276415] (create3_pkg) StdoutLine: {'line': b'writing requirements to create3_pkg.egg-info/requires.txt\n'}
+[7.277691] (create3_pkg) StdoutLine: {'line': b'writing top-level names to create3_pkg.egg-info/top_level.txt\n'}
+[7.359454] (-) TimerEvent: {}
+[7.460027] (-) TimerEvent: {}
+[7.478846] (create3_pkg) StdoutLine: {'line': b"reading manifest file 'create3_pkg.egg-info/SOURCES.txt'\n"}
+[7.481970] (create3_pkg) StdoutLine: {'line': b"writing manifest file 'create3_pkg.egg-info/SOURCES.txt'\n"}
+[7.560188] (-) TimerEvent: {}
+[7.577721] (create3_pkg) StdoutLine: {'line': b'running build_ext\n'}
+[7.578555] (create3_pkg) StdoutLine: {'line': b'Creating /home/robot/create3_ws/install/create3_pkg/lib/python3.12/site-packages/create3-pkg.egg-link (link to .)\n'}
+[7.581024] (create3_pkg) StdoutLine: {'line': b'Installing animationController script to /home/robot/create3_ws/install/create3_pkg/lib/create3_pkg\n'}
+[7.582435] (create3_pkg) StdoutLine: {'line': b'\n'}
+[7.583078] (create3_pkg) StdoutLine: {'line': b'Installed /home/robot/create3_ws/build/create3_pkg\n'}
+[7.583546] (create3_pkg) StdoutLine: {'line': b'running symlink_data\n'}
+[7.660597] (-) TimerEvent: {}
+[7.738596] (create3_pkg) CommandEnded: {'returncode': 0}
+[7.760700] (-) TimerEvent: {}
+[7.791979] (create3_pkg) JobEnded: {'identifier': 'create3_pkg', 'rc': 0}
+[7.794836] (-) EventReactorShutdown: {}
