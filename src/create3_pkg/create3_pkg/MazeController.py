@@ -22,7 +22,7 @@ class MazeController(Node):
         # IR_sensor
         self.ir_values = {}
         self.ir_ready = False
-        self.ir_threshold = 120
+        self.ir_threshold = 100
         self.ir_avoid_speed = 0.04
         self.ir_steer_correction = 0.15
         self.ir_front_sensors = ("ir_intensity_front_center_left")
@@ -34,7 +34,7 @@ class MazeController(Node):
         self.front_lidar_distance = math.inf
         self.left_lidar_distance = math.inf
         self.right_lidar_distance = math.inf
-        self.lidar_block_limit = 0.20
+        self.lidar_block_limit = 0.25
         self.front_block_confirm_scans = 2
         self.front_block_counter = 0
 
@@ -146,9 +146,9 @@ class MazeController(Node):
 
     # LIDAR
     def lidar_callback(self, msg):
-        self.front_lidar_distance = self.get_lidar_region(msg, math.radians(-15), math.radians(15), use_min=True)
-        self.left_lidar_distance = self.get_lidar_region(msg, math.radians(87), math.radians(93), use_min=False)
-        self.right_lidar_distance = self.get_lidar_region(msg, math.radians(-93), math.radians(-87), use_min=False)
+        self.front_lidar_distance = self.get_lidar_region(msg, math.radians(-20), math.radians(20), use_min=True)
+        self.left_lidar_distance = self.get_lidar_region(msg, math.radians(75), math.radians(115), use_min=False)
+        self.right_lidar_distance = self.get_lidar_region(msg, math.radians(-115), math.radians(-75), use_min=False)
 
         self.lidar_ready = True
 
