@@ -43,6 +43,7 @@ class MazeController(Node):
         self.wall_reappear_factor = 0.5
         self.side_change_confirm_scans = 3
         self.wall_update_alpha = 0.05
+        self.open_distance_cap = 1.0
         self.wall_ref_update_factor = 1.15
         self.initial_two_wall_ratio = 1.8
         self.side_trackers = {"left": self.make_side_tracker(), "right": self.make_side_tracker()}
@@ -64,7 +65,7 @@ class MazeController(Node):
 
         #LEAVING A JUNCTION
         self.move_start_x = None
-        self.move_start_y = None
+        self.move_start_y = None 
         self.branch_entry_distance = 0.15
 
         #GOAL POSITION
@@ -299,8 +300,20 @@ class MazeController(Node):
 
                 return opening_started, wall_started
 
-            looks_like_wall = distance < open_ref * self.wall_reappear_factor
+            effective_open_ref = min(open_ref, self.open_distance_cap)
 
+            looks_like_wall = distance < effective_open_ref * self.wall_reappear_factor
+
+            print(
+            side.upper(),
+            "| state = OPEN",
+            "| distance =", distance,
+            "| open_ref =", open_ref,
+            "| effective_open_ref =", effective_open_ref,
+            "| wall_threshold =",
+            effective_open_ref * self.wall_reappear_factor
+                )
+            
             if looks_like_wall:
 
                 if self.confirm_candidate(tracker, "WALL"):
