@@ -25,7 +25,7 @@ class MazeController(Node):
         self.ir_threshold = 100
         self.ir_avoid_speed = 0.04
         self.ir_steer_correction = 0.15
-        self.ir_front_sensors = ("ir_intensity_front_center_left")
+        self.ir_front_sensors = ("ir_intensity_front_center_left",)
         self.ir_front_left_sensors = ("ir_intensity_front_left", "ir_intensity_left")
         self.ir_front_right_sensors = ("ir_intensity_front_center_right", "ir_intensity_front_right")
  
