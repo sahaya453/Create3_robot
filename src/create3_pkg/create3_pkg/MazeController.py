@@ -34,7 +34,7 @@ class MazeController(Node):
         self.front_lidar_distance = math.inf
         self.left_lidar_distance = math.inf
         self.right_lidar_distance = math.inf
-        self.lidar_block_limit = 0.18
+        self.lidar_block_limit = 0.35
         self.front_block_confirm_scans = 2
         self.front_block_counter = 0
 
@@ -68,8 +68,8 @@ class MazeController(Node):
         self.branch_entry_distance = 0.15
 
         #GOAL POSITION
-        self.goal_x = 3.2
-        self.goal_y = 2.1
+        self.goal_x = 2.66
+        self.goal_y = 1.8 
         self.goal_tolerance = 0.40
 
         #ROS PUBLISHER
@@ -529,7 +529,7 @@ class MazeController(Node):
 
         if left_wall_usable and right_wall_usable:
             kp = 1.0
-            u_ref = 0.08
+            u_ref = 0.28
             error = (self.left_lidar_distance - self.right_lidar_distance)
             w_ref = kp * error
             w_ref = max(-0.2, min(0.2, w_ref))
@@ -538,7 +538,7 @@ class MazeController(Node):
 
         if left_wall_usable:
             kp = 1.0
-            u_ref = 0.06
+            u_ref = 0.26
             desired_left = left_tracker["wall_ref"]
             error = self.left_lidar_distance - desired_left
             w_ref = kp * error
@@ -548,7 +548,7 @@ class MazeController(Node):
         
         if right_wall_usable:
             kp = 1.0
-            u_ref = 0.06
+            u_ref = 0.26
             desired_right = right_tracker["wall_ref"]
             error = desired_right - self.right_lidar_distance
             w_ref = kp * error
@@ -599,7 +599,7 @@ class MazeController(Node):
 
         front_block = lidar_front_block or ir_front_block
         # Early turn trigger (prevents bumping)
-        early_turn = (self.front_lidar_distance < 0.45)
+        early_turn = (self.front_lidar_distance < 0.60)
 
         front_open = not front_block
 
@@ -660,8 +660,10 @@ class MazeController(Node):
         elif self.current_state == "JUNCTION":
 
             u_ref, w_ref = self.stop()
-            left_open = self.side_is_open("left")
+            front_open = not self.front_is_blocked()
+            left_open  = self.side_is_open("left")
             right_open = self.side_is_open("right")
+
             branches = self.get_open_branches(front_open, left_open, right_open,)
 
             print("JUNCTION branches =", branches)
