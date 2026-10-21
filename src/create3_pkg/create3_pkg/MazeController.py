@@ -24,17 +24,16 @@ class MazeController(Node):
         self.ir_ready = False
         self.ir_threshold = 100
         self.ir_avoid_speed = 0.04
-        self.ir_steer_correction = 0.15
-        self.ir_front_sensors = ("ir_intensity_front_center_left",)
-        self.ir_front_left_sensors = ("ir_intensity_front_left", "ir_intensity_left")
-        self.ir_front_right_sensors = ("ir_intensity_front_center_right", "ir_intensity_front_right")
+        self.ir_steer_correction = 0.25
+        self.ir_front_left_sensors = ("ir_intensity_front_left", "ir_intensity_left", "ir_intensity_side_left")
+        self.ir_front_right_sensors = ("ir_intensity_front_center_right", "ir_intensity_front_right", "ir_intensity_right")
  
         #LIDAR VALUES
         self.lidar_ready = False
         self.front_lidar_distance = math.inf
         self.left_lidar_distance = math.inf
         self.right_lidar_distance = math.inf
-        self.lidar_block_limit = 0.25
+        self.lidar_block_limit = 0.20
         self.front_block_confirm_scans = 2
         self.front_block_counter = 0
 
@@ -67,11 +66,19 @@ class MazeController(Node):
         self.move_start_x = None
         self.move_start_y = None 
         self.branch_entry_distance = 0.15
+        self.path_wall_limit = 0.50
+        self.path_wall_confirm_scans = 3
+        self.path_wall_counter = 0
 
+        #SET GOAL POSITION RELATIVE TO THE ROBOT'S STARTING POSE
+        self.goal_forward_from_start = None
+        self.goal_right_from_start = None
         #GOAL POSITION
         self.goal_x = None
         self.goal_y = None
-        self.goal_tolerance = 0.05
+        self.start_yaw = None
+        self.goal_initialized = False
+        self.goal_tolerance = 0.25
 
         #ROS PUBLISHER
         self.cmd_vel_publisher = self.create_publisher(Twist, "/robot_1/cmd_vel", 10)
@@ -118,21 +125,20 @@ class MazeController(Node):
 
         if not self.ir_ready:
             return False, False, False, 0, 0, 0
-        front_value = self.get_ir_group_max(self.ir_front_sensors)
         front_left_value = self.get_ir_group_max(self.ir_front_left_sensors)
         front_right_value = self.get_ir_group_max(self.ir_front_right_sensors)
         front_left_blocked = (front_left_value >= self.ir_threshold)
         front_right_blocked = (front_right_value >= self.ir_threshold)
-        front_blocked = (front_value >= self.ir_threshold or (front_left_blocked and front_right_blocked))
+        front_blocked = (front_left_blocked and front_right_blocked)
 
-        return (front_blocked, front_left_blocked, front_right_blocked, front_value, front_left_value, front_right_value,)
+        return front_blocked, front_left_blocked, front_right_blocked
 
     def apply_ir_forward_steering(self, u_ref, w_ref):
 
         if not self.ir_ready or u_ref <= 0.0:
             return u_ref, w_ref
 
-        (front_blocked, front_left_blocked, front_right_blocked, front_value, front_left_value, front_right_value) = self.get_ir_obstacle_status()
+        front_blocked, front_left_blocked, front_right_blocked = self.get_ir_obstacle_status()
 
         if front_blocked:
             return 0.0, 0.0
@@ -147,9 +153,9 @@ class MazeController(Node):
 
     # LIDAR
     def lidar_callback(self, msg):
-        self.front_lidar_distance = self.get_lidar_region(msg, math.radians(-20), math.radians(20), use_min=True)
-        self.left_lidar_distance = self.get_lidar_region(msg, math.radians(75), math.radians(115), use_min=False)
-        self.right_lidar_distance = self.get_lidar_region(msg, math.radians(-115), math.radians(-75), use_min=False)
+        self.front_lidar_distance = self.get_lidar_region(msg, math.radians(-15), math.radians(15), use_min=True)
+        self.left_lidar_distance = self.get_lidar_region(msg, math.radians(75), math.radians(105), use_min=False)
+        self.right_lidar_distance = self.get_lidar_region(msg, math.radians(-105), math.radians(-75), use_min=False)
 
         self.lidar_ready = True
 
@@ -261,7 +267,6 @@ class MazeController(Node):
 
         tracker = self.side_trackers[side]
         opening_started = False
-        wall_started = False
 
         if tracker["state"] == "WALL":
 
@@ -298,35 +303,25 @@ class MazeController(Node):
                 tracker["open_ref"] = distance
                 self.clear_candidate(tracker)
 
-                return opening_started, wall_started
+                return opening_started
 
             effective_open_ref = min(open_ref, self.open_distance_cap)
 
             looks_like_wall = distance < effective_open_ref * self.wall_reappear_factor
 
-            print(
-            side.upper(),
-            "| state = OPEN",
-            "| distance =", distance,
-            "| open_ref =", open_ref,
-            "| effective_open_ref =", effective_open_ref,
-            "| wall_threshold =",
-            effective_open_ref * self.wall_reappear_factor
-                )
             
             if looks_like_wall:
 
                 if self.confirm_candidate(tracker, "WALL"):
 
                     self.set_side_wall(side, distance)
-                    wall_started = True
 
             else:
 
                 self.clear_candidate(tracker)
                 tracker["open_ref"] = max(distance, open_ref * 0.995)
 
-        return opening_started, wall_started
+        return opening_started
 
     def update_side_tracking(self):
 
@@ -358,8 +353,21 @@ class MazeController(Node):
         sin_yaw = 2.0 * (q.w * q.z + q.x * q.y)
         cos_yaw = 1.0 - 2.0 * (q.y * q.y + q.z * q.z)
         self.yaw = math.atan2(sin_yaw, cos_yaw)
+        if not self.goal_initialized:
+                    self.set_goal_from_start_relative()
 
         self.odom_ready = True
+
+    def set_goal_from_start_relative(self):
+
+        self.start_x = self.x
+        self.start_y = self.y
+        self.start_yaw = self.yaw
+
+        self.goal_x = (self.start_x + self.goal_forward_from_start * math.cos(self.start_yaw) + self.goal_right_from_start * math.sin(self.start_yaw))
+        self.goal_y = (self.start_y + self.goal_forward_from_start * math.sin(self.start_yaw) - self.goal_right_from_start * math.cos(self.start_yaw))
+        
+        self.goal_initialized = True
 
     def normalize_angle(self, angle):
 
@@ -565,6 +573,8 @@ class MazeController(Node):
 
         self.move_start_x = None
         self.move_start_y = None
+        self.path_wall_counter = 0
+
         if self.target_yaw is not None:
             self.path_heading = self.target_yaw
         else:
@@ -588,7 +598,7 @@ class MazeController(Node):
 
         lidar_front_block = self.front_is_blocked()
 
-        (ir_front_block, *_) = self.get_ir_obstacle_status()
+        ir_front_block, *_ = self.get_ir_obstacle_status()
 
         front_block = lidar_front_block or ir_front_block
         front_open = not front_block
@@ -739,6 +749,14 @@ class MazeController(Node):
             dy = self.y - self.move_start_y
             distance_moved = math.sqrt(dx**2 + dy**2)
 
+            left_path_wall = math.isfinite(self.left_lidar_distance) and self.left_lidar_distance < self.path_wall_limit
+            right_path_wall = math.isfinite(self.right_lidar_distance) and self.right_lidar_distance < self.path_wall_limit
+            if left_path_wall or right_path_wall:
+                self.path_wall_counter += 1
+            else:
+                self.path_wall_counter = 0
+
+
             if front_block:
 
                 print("FRONT BLOCK during branch entry -> FOLLOW_PATH")
@@ -748,11 +766,12 @@ class MazeController(Node):
 
                 self.move_start_x = None
                 self.move_start_y = None
+                self.path_wall_counter = 0
                 self.target_yaw = None
                 self.current_state = "FOLLOW_PATH"
                 u_ref, w_ref = self.stop()
 
-            elif distance_moved >= self.branch_entry_distance:
+            elif distance_moved >= self.branch_entry_distance and self.path_wall_counter >= self.path_wall_confirm_scans:
 
                 print("branch entry complete -> FOLLOW_PATH")
 
@@ -761,6 +780,7 @@ class MazeController(Node):
 
                 self.move_start_x = None
                 self.move_start_y = None
+                self.path_wall_counter = 0
                 self.target_yaw = None
                 self.current_state = "FOLLOW_PATH"
 
@@ -774,12 +794,6 @@ class MazeController(Node):
         u_ref, w_ref = self.apply_ir_forward_steering(u_ref,w_ref)
 
         self.publish_velocity(u_ref, w_ref)
-
-    # ================================================================
-
-    # PUBLISHING / SHUTDOWN
-
-    # ================================================================
 
     def stop_robot(self):
         self.publish_velocity(0.0, 0.0)
