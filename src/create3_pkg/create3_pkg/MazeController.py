@@ -33,7 +33,7 @@ class MazeController(Node):
         self.front_lidar_distance = math.inf
         self.left_lidar_distance = math.inf
         self.right_lidar_distance = math.inf
-        self.lidar_block_limit = 0.20
+        self.lidar_block_limit = 0.25
         self.front_block_confirm_scans = 2
         self.front_block_counter = 0
 
@@ -129,20 +129,16 @@ class MazeController(Node):
         front_right_value = self.get_ir_group_max(self.ir_front_right_sensors)
         front_left_blocked = (front_left_value >= self.ir_threshold)
         front_right_blocked = (front_right_value >= self.ir_threshold)
-        front_blocked = (front_left_blocked and front_right_blocked)
 
-        return front_blocked, front_left_blocked, front_right_blocked
+        return  front_left_blocked, front_right_blocked
 
     def apply_ir_forward_steering(self, u_ref, w_ref):
 
         if not self.ir_ready or u_ref <= 0.0:
             return u_ref, w_ref
 
-        front_blocked, front_left_blocked, front_right_blocked = self.get_ir_obstacle_status()
-
-        if front_blocked:
-            return 0.0, 0.0
-
+        front_left_blocked, front_right_blocked = self.get_ir_obstacle_status()
+        
         if front_left_blocked and not front_right_blocked:
             return min(u_ref, self.ir_avoid_speed), -self.ir_steer_correction
 
@@ -331,8 +327,8 @@ class MazeController(Node):
 
             return False, False
 
-        left_opening_started, _ = self.update_side_tracker("left", self.left_lidar_distance,)
-        right_opening_started, _ = self.update_side_tracker("right", self.right_lidar_distance,)
+        left_opening_started = self.update_side_tracker("left", self.left_lidar_distance,)
+        right_opening_started = self.update_side_tracker("right", self.right_lidar_distance,)
 
         return left_opening_started, right_opening_started
 
@@ -533,8 +529,9 @@ class MazeController(Node):
         right_wall_usable = (right_tracker["state"] == "WALL" and right_tracker["wall_ref"] is not None and right_tracker["candidate"] != "OPEN")
 
         if left_wall_usable and right_wall_usable:
-            kp = 1.0
-            u_ref = 0.08
+            kp = 0.04
+            u_ref = 0.2
+
             error = (self.left_lidar_distance - self.right_lidar_distance)
             w_ref = kp * error
             w_ref = max(-0.2, min(0.2, w_ref))
@@ -543,7 +540,7 @@ class MazeController(Node):
 
         if left_wall_usable:
             kp = 1.0
-            u_ref = 0.06
+            u_ref = 0.2
             desired_left = left_tracker["wall_ref"]
             error = self.left_lidar_distance - desired_left
             w_ref = kp * error
@@ -553,7 +550,7 @@ class MazeController(Node):
         
         if right_wall_usable:
             kp = 1.0
-            u_ref = 0.06
+            u_ref = 0.2
             desired_right = right_tracker["wall_ref"]
             error = desired_right - self.right_lidar_distance
             w_ref = kp * error
@@ -568,7 +565,6 @@ class MazeController(Node):
         return self.hold_heading(self.path_heading, speed=0.05)
 
     # BRANCH-ENTRY HELPER
-
     def prepare_branch_entry(self, reset_sides=True):
 
         self.move_start_x = None
@@ -598,9 +594,7 @@ class MazeController(Node):
 
         lidar_front_block = self.front_is_blocked()
 
-        ir_front_block, *_ = self.get_ir_obstacle_status()
-
-        front_block = lidar_front_block or ir_front_block
+        front_block = lidar_front_block 
         front_open = not front_block
 
         # FOLLOW_PATH
@@ -667,7 +661,7 @@ class MazeController(Node):
             u_ref, w_ref = self.stop()
             left_open = self.side_is_open("left")
             right_open = self.side_is_open("right")
-            branches = self.get_open_branches(front_open, left_open, right_open,)
+            branches = self.get_open_branches(front_open, left_open, right_open)
 
             print("JUNCTION branches =", branches)
             back_heading = self.normalize_angle(self.yaw + math.pi)
@@ -743,7 +737,7 @@ class MazeController(Node):
 
             if self.side_tracking_initialized:
                 self.update_side_tracking()
-            u_ref, w_ref = self.hold_heading(self.path_heading,speed=0.05)
+            u_ref, w_ref = self.hold_heading(self.path_heading,speed=0.15)
 
             dx = self.x - self.move_start_x
             dy = self.y - self.move_start_y
